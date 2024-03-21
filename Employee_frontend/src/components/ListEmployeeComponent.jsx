@@ -15,6 +15,8 @@ const ListEmployeeComponent = () => {
     function getAllEmployees() {
         listEmployees().then((response) => {
             setEmployees(response.data);
+            console.log(response.data);
+            console.log(employees);
         }).catch(error => {
             console.error(error);
         })
@@ -32,6 +34,7 @@ const ListEmployeeComponent = () => {
 
         deleteEmployee(id).then((response) =>{
             getAllEmployees();
+        
         }).catch(error => {
             console.error(error);
         })
@@ -49,6 +52,7 @@ const ListEmployeeComponent = () => {
                     <th>Employee First Name</th>
                     <th>Employee Last Name</th>
                     <th>Employee Email Id</th>
+                    <th>DepartmentId</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -60,6 +64,7 @@ const ListEmployeeComponent = () => {
                             <td>{employee.firstName}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.email}</td>
+                            <td>{employee.departmentId}</td>
                             <td>
                                 <button className='btn btn-info' onClick={() => updateEmployee(employee.id)}>Update</button>
                                 <button className='btn btn-danger' onClick={() => removeEmployee(employee.id)}
